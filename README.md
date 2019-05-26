@@ -22,13 +22,44 @@ $ php spark mm:publish
 ```
 
 ## Use it
+Run the following commands from the command prompt
 ```shell
+$ php spark mm:publish
 $ php spark mm:down
-```
-```shell
 $ php spark mm:status
-```
-```shell
 $ php spark mm:up
 ```
 
+##### Method 1 (Recommended)
+
+edit application/Config/Events.php and
+add the new line top of the code for maintenance mode check:
+
+```php
+Events::on('pre_system', 'CodeigniterExt\MaintenanceMode\Controllers\MaintenanceMode::check');
+...
+```
+
+##### Method 2
+
+edit application/Config/Filters.php and
+add the new line in $aliases array:
+
+```php
+public $aliases = [
+    'maintenancemode' => \CodeigniterExt\MaintenanceMode\Filters\MaintenanceMode::class,
+    ...
+]
+```
+Now you can use "maintenancemode" in $globals['before']:
+```php
+public $globals = [
+    'before' => [
+        'maintenancemode',
+        ...
+    ],
+    'after'  => [
+        ...
+    ],
+];
+```

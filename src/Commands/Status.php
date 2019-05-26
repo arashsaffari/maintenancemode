@@ -67,7 +67,6 @@ class Status extends BaseCommand
 			CLI::table($tbody, $thead);
 			
 			CLI::write('');
-
 			
 		}else{
 			CLI::write('');

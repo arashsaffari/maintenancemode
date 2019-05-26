@@ -16,7 +16,11 @@ class Up extends BaseCommand
 	{
 		$config = config( 'CodeigniterExt\\MaintenanceMode\\MaintenanceMode' );
 
+		//
+		//delete the file with json content
+		//
 		@unlink($config->FilePath . $config->FileName);
+		
 		CLI::write('');
 		CLI::write('**** Application is now live. ****', 'green');
 		CLI::write('');

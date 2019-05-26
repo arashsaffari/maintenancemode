@@ -7,8 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 class MaintenanceMode implements FilterInterface
 {
 		/**
-		 * This is a demo implementation of using the Throttler class
-		 * to implement rate limiting for your application.
+		 * This is implementation of Maintenance Mode class
 		 *
 		 * @param RequestInterface|\CodeIgniter\HTTP\IncomingRequest $request
 		 *

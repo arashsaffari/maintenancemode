@@ -23,11 +23,16 @@ class Down extends BaseCommand
 
 			$ips_array = explode(" ", $ips_str);
 
+			//
 			// dir doesn't exist, make it
+			//
 			if (!is_dir($config->FilePath)) {
 				mkdir($config->FilePath);
 			}
 
+			//
+			// write the file with json content
+			//
 			file_put_contents(
 				$config->FilePath . $config->FileName,
 				json_encode([
@@ -43,7 +48,7 @@ class Down extends BaseCommand
 			CLI::write('');
 
 			$this->call('mm:status');
-			
+
 		}else{
 			CLI::write('');
 			CLI::write('**** Application is already DOWN. ****', 'red');
@@ -52,12 +57,15 @@ class Down extends BaseCommand
 	}
 
 	function randomhash($len = 8){
-		$seed = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'); // and any other characters
-		shuffle($seed); // probably optional since array_is randomized; this may be redundant
+		$seed = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
+		shuffle($seed);
 		$rand = '';
-		foreach (array_rand($seed, $len) as $k){
+		
+		foreach (array_rand($seed, $len) as $k)
+		{
 			$rand .= $seed[$k];
 		}
+		
 		return $rand;
 	  }
 }

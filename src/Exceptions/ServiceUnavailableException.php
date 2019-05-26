@@ -11,6 +11,6 @@ class ServiceUnavailableException extends \DomainException implements ExceptionI
 
 	public static function forServerDow(string $message = null)
 	{
-		return new static($message ?? lang('HTTP.pageNotFound'));
+		return new static($message ?? false);
 	}
 }

@@ -3,12 +3,12 @@
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
 
-class Info extends BaseCommand
+class Status extends BaseCommand
 {
 	protected $group        = 'Maintenance Mode';
-	protected $name         = 'mm:info';
-	protected $description  = 'Display the maintenance mode info';
-	protected $usage        = 'mm:info';
+	protected $name         = 'mm:status';
+	protected $description  = 'Display the maintenance mode status';
+	protected $usage        = 'mm:status';
 	protected $arguments    = [];
 	protected $options 		= [];
 

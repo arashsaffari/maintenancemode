@@ -1,21 +1,34 @@
 <?php namespace CodeigniterExt\MaintenanceMode\Controllers;
 
 use CodeIgniter\Controller;
-
 use Config\Services;
 use CodeigniterExt\MaintenanceMode\Libraries\IpUtils;
 use CodeigniterExt\MaintenanceMode\Exceptions\ServiceUnavailableException;
 
 class MaintenanceMode extends Controller
 {
+    private $config;
 
     public function __construct(){}
+
+    public static function getConfig()
+    {
+        $config = config( 'MaintenanceMode' );
+        
+        if (empty($config)){
+            $config = config( 'CodeigniterExt\MaintenanceMode\MaintenanceMode' );
+        }
+
+        return $config;
+    }
 
     /**
      * 
      */
     public static function check()
     {
+        $config = (new self)->getConfig();
+
         //
         // if request is from CLI
         //
@@ -32,7 +45,7 @@ class MaintenanceMode extends Controller
         if (!file_exists($donwFilePath)) {
             return true;
         }
-        
+
 
         //
         // get all json data from donw file

@@ -37,6 +37,12 @@ class Publish extends BaseCommand
             $map = directory_map($this->sourcePath . '/Views/errors/html');
             $this->publishViews($map, 'errors/html/');
         }
+
+        // Config
+        if (CLI::prompt('Publish Config file?', ['y', 'n']) == 'y')
+        {
+            $this->publishConfig();
+        }
     }
 
     protected function publishViews($map, $subfolder)
@@ -73,6 +79,17 @@ class Publish extends BaseCommand
         $content = file_get_contents($path);
 
         $this->writeFile("Views/{$subfolder}{$prefix}{$view}", $content);
+    }
+
+    protected function publishConfig()
+    {
+        $path = "{$this->sourcePath}/Config/MaintenanceMode.php";
+
+        $content = file_get_contents($path);
+        $appNamespace = APP_NAMESPACE;
+        $content = str_replace('namespace CodeigniterExt\MaintenanceMode\Config', "namespace {$appNamespace}\Config", $content);
+
+        $this->writeFile("Config/MaintenanceMode.php", $content);
     }
 
     /**

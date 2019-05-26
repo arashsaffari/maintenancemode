@@ -41,6 +41,9 @@ class Down extends BaseCommand
 			CLI::write('');
 			CLI::write('**** Application is now DOWN. ****', 'red');
 			CLI::write('');
+
+			$this->call('mm:status');
+			
 		}else{
 			CLI::write('');
 			CLI::write('**** Application is already DOWN. ****', 'red');

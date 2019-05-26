@@ -30,7 +30,7 @@ $ php spark mm:status
 $ php spark mm:up
 ```
 
-##### Method 1 (Recommended)
+#### Method 1 (Recommended)
 
 edit application/Config/Events.php and
 add the new line top of the code for maintenance mode check:
@@ -40,7 +40,7 @@ Events::on('pre_system', 'CodeigniterExt\MaintenanceMode\Controllers\Maintenance
 ...
 ```
 
-##### Method 2
+#### Method 2
 
 edit application/Config/Filters.php and
 add the new line in $aliases array:

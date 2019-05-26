@@ -14,13 +14,13 @@ class Up extends BaseCommand
 
 	public function run(array $params)
 	{
-		$config = config( 'CodeigniterExt\\MaintenanceMode\\MaintenanceMode' );
+		$config = \CodeigniterExt\MaintenanceMode\Controllers\MaintenanceMode::getConfig();
 
 		//
 		//delete the file with json content
 		//
 		@unlink($config->FilePath . $config->FileName);
-		
+
 		CLI::write('');
 		CLI::write('**** Application is now live. ****', 'green');
 		CLI::write('');

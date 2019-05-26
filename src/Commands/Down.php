@@ -14,7 +14,7 @@ class Down extends BaseCommand
 
 	public function run(array $params)
 	{
-		$config = config( 'CodeigniterExt\\MaintenanceMode\\MaintenanceMode' );
+		$config = \CodeigniterExt\MaintenanceMode\Controllers\MaintenanceMode::getConfig();
 
 		if (! file_exists($config->FilePath . $config->FileName)) {
 			

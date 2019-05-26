@@ -22,7 +22,7 @@ $ php spark mm:publish
 ```
 
 ## Use it
-Run the following commands from the command prompt
+Now you can use the following commands from the command prompt
 ```shell
 $ php spark mm:publish
 $ php spark mm:down
@@ -51,7 +51,7 @@ public $aliases = [
     ...
 ]
 ```
-Now you can use "maintenancemode" in $globals['before']:
+and add "maintenancemode" in $globals['before'] array:
 ```php
 public $globals = [
     'before' => [

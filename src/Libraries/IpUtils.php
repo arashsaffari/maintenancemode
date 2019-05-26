@@ -1,6 +1,6 @@
 <?php
 
-namespace MaintenanceMode\Libraries;
+namespace CodeigniterExt\MaintenanceMode\Libraries;
 
 class IpUtils
 {

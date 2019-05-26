@@ -1,4 +1,4 @@
-<?php namespace MaintenanceMode\Config;
+<?php namespace CodeigniterExt\MaintenanceMode\Config;
 
 use CodeIgniter\Config\BaseConfig;
 
@@ -11,5 +11,6 @@ class MaintenanceMode extends BaseConfig
     // The amount of time, in seconds, that you want a login to last for.
     // Defaults to 30 days.
     //
-    public $FilePath = WRITEPATH . 'framework/down';
+    public $FilePath = WRITEPATH . 'framework/';
+    public $FileName = 'down';
 }

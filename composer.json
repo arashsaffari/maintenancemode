@@ -9,6 +9,12 @@
         }
     ],
     "require": {
-        
+
+    },
+    "autoload": {
+        "psr-4": {
+            "CodeigniterExt\\MaintenanceMode\\": "src"
+        }
     }
+
 }

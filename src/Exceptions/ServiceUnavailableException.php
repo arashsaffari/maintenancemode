@@ -1,4 +1,4 @@
-<?php namespace MaintenanceMode\Exceptions;
+<?php namespace CodeigniterExt\MaintenanceMode\Exceptions;
 
 class ServiceUnavailableException extends \DomainException implements ExceptionInterface
 {

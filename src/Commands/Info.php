@@ -1,4 +1,4 @@
-<?php namespace MaintenanceMode\Commands;
+<?php namespace CodeigniterExt\MaintenanceMode\Commands;
 
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
@@ -14,9 +14,11 @@ class Info extends BaseCommand
 
 	public function run(array $params)
 	{
-		if (file_exists(config( 'MaintenanceMode\\MaintenanceMode' )->FilePath)){
+		$config = config( 'CodeigniterExt\\MaintenanceMode\\MaintenanceMode' );
 
-			$data = json_decode(file_get_contents(config( 'MaintenanceMode\\MaintenanceMode' )->FilePath), true);
+		if (file_exists($config->FilePath.$config->FileName)){
+
+			$data = json_decode(file_get_contents($config->FilePath.$config->FileName), true);
 			
 			CLI::write('');
 			CLI::write('**** Application is already DOWN. ****', 'red');

@@ -1,4 +1,4 @@
-<?php namespace MaintenanceMode\Commands;
+<?php namespace CodeigniterExt\MaintenanceMode\Commands;
 
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
@@ -14,7 +14,9 @@ class Up extends BaseCommand
 
 	public function run(array $params)
 	{
-		@unlink(config( 'MaintenanceMode\\MaintenanceMode' )->FilePath);
+		$config = config( 'CodeigniterExt\\MaintenanceMode\\MaintenanceMode' );
+
+		@unlink($config->FilePath . $config->FileName);
 		CLI::write('');
 		CLI::write('**** Application is now live. ****', 'green');
 		CLI::write('');

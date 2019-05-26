@@ -1,10 +1,10 @@
-<?php namespace MaintenanceMode\Controllers;
+<?php namespace CodeigniterExt\MaintenanceMode\Controllers;
 
 use CodeIgniter\Controller;
 
 use Config\Services;
-use MaintenanceMode\Libraries\IpUtils;
-use MaintenanceMode\Exceptions\ServiceUnavailableException;
+use CodeigniterExt\MaintenanceMode\Libraries\IpUtils;
+use CodeigniterExt\MaintenanceMode\Exceptions\ServiceUnavailableException;
 
 class MaintenanceMode extends Controller
 {
@@ -21,7 +21,10 @@ class MaintenanceMode extends Controller
         //
         if(is_cli()) return true;
 
-        $donwFilePath = config( 'MaintenanceMode\\MaintenanceMode' )->FilePath;
+
+        $config = config( 'CodeigniterExt\\MaintenanceMode\\MaintenanceMode' );
+
+        $donwFilePath = $config->FilePath . $config->FileName;
 
         //
         // if donw file does not exist app should keep running
@@ -45,7 +48,6 @@ class MaintenanceMode extends Controller
             return true;
         }
 
-
         //
         // if user's browser has been used the cookie pass
         // the app should continue running
@@ -56,10 +58,6 @@ class MaintenanceMode extends Controller
         if($cookieName == $data["cookie_name"]){
             return true;
         }
-
-        //HTTP_METHOD_NOT_ALLOWED
-        // echo "ss";
-        // return new static(lang('HTTP.methodNotFound', ["404"]));
 
         throw ServiceUnavailableException::forServerDow($data["message"]);
     }

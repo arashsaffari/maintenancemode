@@ -1,4 +1,4 @@
-<?php namespace MaintenanceMode\Exceptions;
+<?php namespace CodeigniterExt\MaintenanceMode\Exceptions;
 
 /**
  * Provides a domain-level interface for broad capture

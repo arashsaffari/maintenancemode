@@ -1,4 +1,4 @@
-<?php namespace MaintenanceMode\Filters;
+<?php namespace CodeigniterExt\MaintenanceMode\Filters;
 
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
@@ -16,7 +16,7 @@ class MaintenanceMode implements FilterInterface
 		 */
 		public function before(RequestInterface $request)
 		{
-			\MaintenanceMode\Controllers\MaintenanceMode::check();
+			\CodeigniterExt\MaintenanceMode\Controllers\MaintenanceMode::check();
 		}
 
 		//--------------------------------------------------------------------

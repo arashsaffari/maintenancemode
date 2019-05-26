@@ -1,0 +1,66 @@
+<?php namespace MaintenanceMode\Controllers;
+
+use CodeIgniter\Controller;
+
+use Config\Services;
+use MaintenanceMode\Libraries\IpUtils;
+use MaintenanceMode\Exceptions\ServiceUnavailableException;
+
+class MaintenanceMode extends Controller
+{
+
+    public function __construct(){}
+
+    /**
+     * 
+     */
+    public static function check()
+    {
+        //
+        // if request is from CLI
+        //
+        if(is_cli()) return true;
+
+        $donwFilePath = config( 'MaintenanceMode\\MaintenanceMode' )->FilePath;
+
+        //
+        // if donw file does not exist app should keep running
+        //
+        if (!file_exists($donwFilePath)) {
+            return true;
+        }
+
+        //
+        // get all json data from donw file
+        //
+        $data = json_decode(file_get_contents($donwFilePath), true);
+
+        
+        //
+        // if request ip was entered in allowed_ips
+        // the app should continue running
+        //
+        $lib = new IpUtils();
+        if ($lib->checkIp(Services::request()->getIPAddress(), $data["allowed_ips"])) {
+            return true;
+        }
+
+
+        //
+        // if user's browser has been used the cookie pass
+        // the app should continue running
+        //
+        helper('cookie');
+        $cookieName = get_cookie($data["cookie_name"]);
+
+        if($cookieName == $data["cookie_name"]){
+            return true;
+        }
+
+        //HTTP_METHOD_NOT_ALLOWED
+        // echo "ss";
+        // return new static(lang('HTTP.methodNotFound', ["404"]));
+
+        throw ServiceUnavailableException::forServerDow($data["message"]);
+    }
+}

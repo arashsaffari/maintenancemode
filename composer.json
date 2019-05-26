@@ -1,0 +1,12 @@
+{
+    "name": "arashsaffari/ci4_maintenance-mode",
+    "description": "Maintenance Mode module for CodeIgniter 4",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arash Saffari",
+            "email": "arash@saffari.com"
+        }
+    ],
+    "require": {}
+}

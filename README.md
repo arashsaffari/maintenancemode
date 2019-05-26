@@ -13,6 +13,14 @@ or
 ```shell
 $ composer require codeigniterext/maintenancemode:dev-master
 ```
+
+Now you can use the following commands from the command prompt
+```shell
+$ php spark mm:publish
+$ php spark mm:down
+$ php spark mm:status
+$ php spark mm:up
+```
 ---
 
 ## Configuration
@@ -22,13 +30,6 @@ $ php spark mm:publish
 ```
 
 ## Use it
-Now you can use the following commands from the command prompt
-```shell
-$ php spark mm:publish
-$ php spark mm:down
-$ php spark mm:status
-$ php spark mm:up
-```
 
 #### Method 1 (Recommended)
 
@@ -39,6 +40,8 @@ add the new line top of the code for maintenance mode check:
 Events::on('pre_system', 'CodeigniterExt\MaintenanceMode\Controllers\MaintenanceMode::check');
 ...
 ```
+
+---
 
 #### Method 2
 

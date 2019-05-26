@@ -32,6 +32,7 @@ class MaintenanceMode extends Controller
         if (!file_exists($donwFilePath)) {
             return true;
         }
+        
 
         //
         // get all json data from donw file

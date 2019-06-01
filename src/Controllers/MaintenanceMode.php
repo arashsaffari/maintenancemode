@@ -16,7 +16,8 @@ class MaintenanceMode extends Controller
         $config = config( 'MaintenanceMode' );
         
         if (empty($config)){
-            $config = config( 'CodeigniterExt\MaintenanceMode\MaintenanceMode' );
+            
+            $config = new \CodeigniterExt\MaintenanceMode\Config\MaintenanceMode();
         }
 
         return $config;
@@ -27,15 +28,13 @@ class MaintenanceMode extends Controller
      */
     public static function check()
     {
-        $config = (new self)->getConfig();
 
         //
         // if request is from CLI
         //
         if(is_cli()) return true;
 
-
-        $config = config( 'CodeigniterExt\\MaintenanceMode\\MaintenanceMode' );
+        $config = (new self)->getConfig();
 
         $donwFilePath = $config->FilePath . $config->FileName;
 

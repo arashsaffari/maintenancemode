@@ -22,7 +22,7 @@ class Up extends BaseCommand
 		@unlink($config->FilePath . $config->FileName);
 
 		CLI::write('');
-		CLI::write('**** Application is now live. ****', 'green');
+		CLI::write('**** Application is now live. ****', 'black', 'green');
 		CLI::write('');
 	}
 }

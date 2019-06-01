@@ -43,16 +43,16 @@ class Down extends BaseCommand
 				], JSON_PRETTY_PRINT)
 			);
 
-			CLI::write('');
-			CLI::write('**** Application is now DOWN. ****', 'red');
-			CLI::write('');
+			CLI::newLine(1);
+			CLI::write('**** Application is now DOWN. ****', 'white', 'red');
+			CLI::newLine(1);
 
 			$this->call('mm:status');
 
 		}else{
-			CLI::write('');
-			CLI::write('**** Application is already DOWN. ****', 'red');
-			CLI::write('');
+			CLI::newLine(1);
+			CLI::error('**** Application is already DOWN. ****');
+			CLI::newLine(1);
 		}
 	}
 

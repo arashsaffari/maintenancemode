@@ -20,9 +20,9 @@ class Status extends BaseCommand
 
 			$data = json_decode(file_get_contents($config->FilePath.$config->FileName), true);
 			
-			CLI::write('');
-			CLI::write('**** Application is already DOWN. ****', 'red');
-			CLI::write('');
+			CLI::newLine(1);
+			CLI::error('Application is already DOWN.');
+			CLI::newLine(1);
 			
 			//
 			// echo keys and values in table
@@ -66,12 +66,12 @@ class Status extends BaseCommand
 
 			CLI::table($tbody, $thead);
 			
-			CLI::write('');
+			CLI::newLine(1);
 			
 		}else{
-			CLI::write('');
+			CLI::newLine(1);
 			CLI::write('**** Application is already live. ****', 'green');
-			CLI::write('');
+			CLI::newLine(1);
 		}
 	}
 }

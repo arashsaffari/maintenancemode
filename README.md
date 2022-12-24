@@ -37,7 +37,7 @@ edit application/Config/Events.php and
 add the new line top of the code for maintenance mode check:
 
 ```php
-Events::on('pre_system', 'CodeigniterExt\MaintenanceMode\Controllers\MaintenanceMode::check');
+Events::on('post_controller_constructor', 'CodeigniterExt\MaintenanceMode\Controllers\MaintenanceMode::check');
 ...
 ```
 
